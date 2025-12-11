@@ -1,6 +1,5 @@
 from fastapi import FastAPI
 
-from cache.instances import InMemoryCacheDB
 from controllers.external import external_router
 from controllers.internal import internal_router
 
