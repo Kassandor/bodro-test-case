@@ -10,16 +10,16 @@ internal_router = APIRouter()
 
 
 @internal_router.get('/weather/{city}')
-async def get_weather(body: GetWeatherRequest) -> GetWeatherResponse:
+async def get_weather(city: str) -> GetWeatherResponse:
     """
     Получение текущей погоды в городе
-    :param body: GetWeatherRequest
-    :return:
+    :param city: Город
+    :return: GetWeatherResponse
     """
 
-    cached_obj = cache.get(body.city)
+    cached_obj = cache.get(city)
     if cached_obj and not cached_obj.is_expired():
         return GetWeatherResponse(city=cached_obj.key, temp=cached_obj.value)
 
-    result = await external_weather_api(body)
-    return GetWeatherResponse(city=body.city, temp=result['temp'])
+    result = await external_weather_api(GetWeatherRequest(city=city))
+    return GetWeatherResponse(city=result.city, temp=result.temp)
