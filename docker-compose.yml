@@ -1,0 +1,18 @@
+networks:
+  bodro:
+    name: 'bodro'
+    driver: 'bridge'
+
+services:
+  app-bodro:
+    container_name: app
+    networks:
+      - bodro
+    restart: on-failure
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./app:/app
+    build:
+      context: .
+      dockerfile: Dockerfile
