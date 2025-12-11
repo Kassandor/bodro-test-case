@@ -12,7 +12,7 @@ class ICachedObject(ABC):
 
     key: str
     value: Any
-    ttl: int | None = None
+    ttl: int = 20
     created_at: datetime = field(default_factory=lambda: datetime.now(timezone.utc))
 
     def is_expired(self) -> bool:

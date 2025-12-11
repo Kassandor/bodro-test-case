@@ -3,6 +3,10 @@ from datetime import datetime, timezone
 from app.cache.interfaces import ICacheDB, ICachedObject
 
 
+class CachedObject(ICachedObject):
+    pass
+
+
 class InMemoryCacheDB(ICacheDB):
     def __init__(self):
         self.storage: dict[str, ICachedObject] = {}
@@ -17,7 +21,8 @@ class InMemoryCacheDB(ICacheDB):
         return obj
 
     def put(self, obj: ICachedObject):
-        obj.created_at = datetime.now(timezone.utc)
+        if not isinstance(obj, ICachedObject):
+            raise TypeError('Нужен ICachedObject объект')
         self.storage[obj.key] = obj
 
     def delete(self, key: str):
