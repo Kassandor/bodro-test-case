@@ -7,7 +7,7 @@ from typing import Any
 @dataclass
 class ICachedObject(ABC):
     """
-
+    Интерфейс кэшированного объекта
     """
 
     key: str
@@ -17,8 +17,8 @@ class ICachedObject(ABC):
 
     def is_expired(self) -> bool:
         """
-
-        :return:
+        Проверка: кэш протух
+        :return: bool
         """
         if self.ttl is None:
             return False
@@ -27,7 +27,7 @@ class ICachedObject(ABC):
 
 class ICacheDB(ABC):
     """
-
+    Интерфейс БД в кеше
     """
 
     @abstractmethod

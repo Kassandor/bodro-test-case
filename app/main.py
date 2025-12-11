@@ -7,5 +7,5 @@ from app.controllers.internal import internal_router
 app = FastAPI()
 cache = InMemoryCacheDB()
 
-app.include_router(external_router, prefix="/external")
-app.include_router(internal_router, prefix="/internal")
+app.include_router(external_router)
+app.include_router(internal_router)

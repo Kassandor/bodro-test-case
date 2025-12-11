@@ -1,13 +1,18 @@
-from datetime import datetime, timezone
-
 from app.cache.interfaces import ICacheDB, ICachedObject
 
 
 class CachedObject(ICachedObject):
+    """
+    Кэшированный объект
+    """
     pass
 
 
 class InMemoryCacheDB(ICacheDB):
+    """
+    In memory кэш
+    """
+
     def __init__(self):
         self.storage: dict[str, ICachedObject] = {}
 
