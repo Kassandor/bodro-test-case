@@ -48,7 +48,7 @@ async def external_weather_api(body: GetWeatherRequest) -> GetWeatherResponse:
     """
     Получение данных с внешнего апи
     :param body: GetWeatherRequest
-    :return:
+    :return: GetWeatherResponse
     """
     await take_token()
 

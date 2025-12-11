@@ -21,5 +21,5 @@ async def get_weather(city: str) -> GetWeatherResponse:
     if cached_obj and not cached_obj.is_expired():
         return GetWeatherResponse(city=cached_obj.key, temp=cached_obj.value)
 
-    result = await external_weather_api(GetWeatherRequest(city=city))
-    return GetWeatherResponse(city=result.city, temp=result.temp)
+    result: GetWeatherResponse = await external_weather_api(GetWeatherRequest(city=city))
+    return result
