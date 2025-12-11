@@ -4,10 +4,9 @@ from time import monotonic
 
 from fastapi import APIRouter, HTTPException
 
-from app.cache.instances import CachedObject
-from app.dtos.requests import GetWeatherRequest
-from app.dtos.responses import GetWeatherResponse
-from app.main import cache
+from cache.instances import CachedObject, cache
+from dtos.requests import GetWeatherRequest
+from dtos.responses import GetWeatherResponse
 
 external_router = APIRouter()
 

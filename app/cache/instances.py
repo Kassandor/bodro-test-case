@@ -1,4 +1,4 @@
-from app.cache.interfaces import ICacheDB, ICachedObject
+from cache.interfaces import ICacheDB, ICachedObject
 
 
 class CachedObject(ICachedObject):
@@ -33,3 +33,6 @@ class InMemoryCacheDB(ICacheDB):
     def delete(self, key: str):
         if key in self.storage:
             del self.storage[key]
+
+
+cache = InMemoryCacheDB()

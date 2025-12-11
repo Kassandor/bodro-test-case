@@ -1,9 +1,10 @@
 from fastapi import APIRouter
 
-from app.controllers.external import external_weather_api
-from app.dtos.requests import GetWeatherRequest
-from app.dtos.responses import GetWeatherResponse
-from app.main import cache
+from cache.instances import cache
+from controllers.external import external_weather_api
+from dtos.requests import GetWeatherRequest
+from dtos.responses import GetWeatherResponse
+
 
 internal_router = APIRouter()
 
